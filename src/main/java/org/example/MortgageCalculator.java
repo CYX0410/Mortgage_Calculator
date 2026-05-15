@@ -5,46 +5,39 @@ import java.util.Scanner;
 
 public class MortgageCalculator {
     public static void main(String[] args) {
-        final int month = 12;
-        final int percent = 100;
-        int principal = 0;
-        float annualInterest = 0.00F;
-        int years = 0;
         //Principal
-        Scanner scan = new Scanner(System.in);
+        int principal = (int) readNumber("Principal: ", 1000, 1000000);
+        //Annual Interest Rate
+        float annualInterest = (float) readNumber("Annual Interest Rate: ", 1, 30);
+        //Period in years
+        int years = (int) readNumber("Period (Years): ", 1, 30);
 
-        while (true) {
-            System.out.println("Principal (RM1k - RM1M): ");
-            principal = scan.nextInt();
-            if(principal >= 1000 && principal <= 1000000)
-                break;
-            System.out.println("Enter a number between 1,000 and 1,000,000.");
-        }
-            //Annual Interest Rate
-            while (true){
-                System.out.println("Annual Interest Rate: ");
-                annualInterest = scan.nextFloat();
-                if(annualInterest >= 1 && annualInterest <= 30)
-                    break;
-                System.out.println("Enter a value greater than 0 and less than or equal to 30.");
-            }
-            float monthly_interest = (annualInterest / percent) / month;
-            //Period in years
-
-            while(true){
-                System.out.println("Period (Years): ");
-                years = scan.nextInt();
-                if(years >= 1 && years <= 30)
-                    break;
-                System.out.println("Enter a value between 1 and 30");
-            }
-            int period = years * month;
-            //calculate mortgage
-            double mortgage = principal * (monthly_interest * (Math.pow(1 + monthly_interest, period))) / ((Math.pow(1 + monthly_interest, period)) - 1);
+        double mortgage1 = calculateMortgage(principal, annualInterest, years);
             //Change the amount to currency
-            NumberFormat currency = NumberFormat.getCurrencyInstance();
-            String result = currency.format(mortgage);
-            System.out.println("Mortgage(RM): " + result);
+            String mortgageFormatted = NumberFormat.getCurrencyInstance().format(mortgage1);
+            System.out.println("Mortgage(RM): " + mortgageFormatted);
+        }
+    //read number
+        public static double readNumber(String prompt, double min, double max){
+            Scanner scanner =  new Scanner(System.in);
+            double value;
+            while (true){
+                System.out.print(prompt);
+                value = scanner.nextFloat();
+                if(value >= min && value <= max)
+                    break;
+                System.out.println("Enter a value between " + min + " and" + max);
+            }
+            return value;
+        }
+    //calculate mortgage
+        public static double  calculateMortgage(int principal, float annualInterest, int years){
+            final int month = 12;
+            final int percent = 100;
+            int period = years * month;
+            float monthly_interest = (annualInterest / percent) / month;
+            double mortgage = principal * (monthly_interest * (Math.pow(1 + monthly_interest, period))) / ((Math.pow(1 + monthly_interest, period)) - 1);
+            return mortgage;
         }
     }
 
