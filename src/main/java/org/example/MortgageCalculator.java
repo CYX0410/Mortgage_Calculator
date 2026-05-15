@@ -1,7 +1,5 @@
 package org.example;
 
-import java.security.Principal;
-import java.security.PublicKey;
 import java.text.NumberFormat;
 import java.util.Scanner;
 
@@ -50,16 +48,15 @@ public class MortgageCalculator {
         public static double  calculateMortgage(int principal, float annualInterest, int years){
             int period = years * month;
             float monthly_interest = (annualInterest / percent) / month;
-            double mortgage = principal * (monthly_interest * (Math.pow(1 + monthly_interest, period))) / ((Math.pow(1 + monthly_interest, period)) - 1);
-            return mortgage;
+            return principal * (monthly_interest * (Math.pow(1 + monthly_interest, period)))
+                    / ((Math.pow(1 + monthly_interest, period)) - 1);
         }
         public static double paymentSchedule(int principal, float annualInterest, int years, short numOfPayments){
             int period = years * month;
             float monthly_interest = (annualInterest / percent) / month;
-            double balance = principal *
-                    (Math.pow(1 + monthly_interest, period) - Math.pow(1 + monthly_interest, numOfPayments))
+            return principal *
+                      (Math.pow(1 + monthly_interest, period) - Math.pow(1 + monthly_interest, numOfPayments))
                     / (Math.pow(1 + monthly_interest, period) -1);
-            return balance;
         }
     }
 
