@@ -39,3 +39,6 @@ Where:
 ### Output 2 (After adding a while loop)
 <img width="502" height="418" alt="image" src="https://github.com/user-attachments/assets/2dff9fe3-c9fc-4129-8565-5235cc32a41e" />
 
+### Output 3 (Add Payment Schedule function)
+<img width="395" height="545" alt="image" src="https://github.com/user-attachments/assets/1a38a7ee-e53f-41c6-b49b-99212c5f0aa2" />
+
