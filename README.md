@@ -36,3 +36,6 @@ Where:
 ### Output 
 <img width="343" height="230" alt="image" src="https://github.com/user-attachments/assets/838610cb-296b-474c-b8bc-c9ca769832e9" />
 
+### Output 2 (After adding a while loop)
+<img width="502" height="418" alt="image" src="https://github.com/user-attachments/assets/2dff9fe3-c9fc-4129-8565-5235cc32a41e" />
+
