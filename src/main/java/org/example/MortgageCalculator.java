@@ -15,8 +15,8 @@ public class MortgageCalculator {
     }
 
     public double  calculateMortgage(){
-        int period = years * month;
-        float monthly_interest = (annualInterest / percent) / month;
+        int period = getNumberOfPayments();
+        float monthly_interest = getMonthlyInterest();
         return principal * (monthly_interest * (Math.pow(1 + monthly_interest, period)))
                 / ((Math.pow(1 + monthly_interest, period)) - 1);
     }
